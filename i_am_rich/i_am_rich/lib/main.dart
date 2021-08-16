@@ -11,8 +11,8 @@ void main() {
         backgroundColor: Colors.blueGrey[900],
       ),
       body: Center(
-        child: Image( // NetworkImage는 Url을 통해 서버이미지를 가져올때 사용합니다. 안드로이드의 Glide라고 생각!, 그밖에 AssetImage 등 다른것들도 있습니다.
-          image: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnYB7pV4de12zrKQayds0fU56TBYw06fYaqQ&usqp=CAU'),
+        child: Image( // AssetImage 는 프로젝트 내부 이미지 파일을 불러올 수 있습니다.
+          image: AssetImage('images/diamond.png'),
         ),
       ),
     )
