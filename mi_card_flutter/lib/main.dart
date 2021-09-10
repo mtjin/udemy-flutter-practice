@@ -22,9 +22,20 @@ class MyApp extends StatelessWidget {
             Text(
               "JackJackE",
               style: TextStyle(
+                  fontFamily: 'Pacifico', // pubspec.yaml 에 폰트이름 설정해논거 세팅
                   fontSize: 40.0,
                   color: Colors.white,
                   fontWeight: FontWeight.bold),
+            ),
+            Text(
+              "Flutter Developer",
+              style: TextStyle(
+                fontFamily: 'Source Sans Pro', // pubspec.yaml 에 폰트이름 설정해논거 세팅
+                fontSize: 40.0,
+                color: Colors.teal.shade100,
+                letterSpacing: 2.5,
+                fontWeight: FontWeight.bold
+              ),
             )
           ],
         )),
