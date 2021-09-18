@@ -18,6 +18,9 @@ void main() {
 class DicePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+    var leftDiceNumber = 5;
+
     return Center(
       child: Row(
         children: <Widget>[
@@ -28,7 +31,7 @@ class DicePage extends StatelessWidget {
               onPressed: () {
                 print('왼쪽 주사위 onPressed!!!');
               }, // 클릭이벤트(void callback 구조)
-              child: Image.asset('images/dice1.png'),
+              child: Image.asset('images/dice$leftDiceNumber.png'),
             ),
           ), // image.asset 로 코드 간결화
           Expanded(
