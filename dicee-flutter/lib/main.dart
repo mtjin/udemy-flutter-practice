@@ -1,4 +1,5 @@
 import 'dart:math'; // Math 라이브러리 추가
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -39,6 +40,7 @@ class _DicePageState extends State<DicePage> {
               onPressed: () {
                 setState(() {
                   leftDiceNumber = Random().nextInt(6) + 1; // 숫자 랜덤
+                  rightDiceNumber = Random().nextInt(6) + 1; // 숫자 랜덤
                 }); // setState() 메소드를 build() 함수를 다시 호출하게 해줌
               }, // 클릭이벤트(void callback 구조)
               child: Image.asset('images/dice$leftDiceNumber.png'),
@@ -49,6 +51,7 @@ class _DicePageState extends State<DicePage> {
             child: FlatButton(
                 onPressed: () {
                   setState(() {
+                    leftDiceNumber = Random().nextInt(6) + 1; // 숫자 랜덤
                     rightDiceNumber = Random().nextInt(6) + 1; // 숫자 랜덤
                   });
                 }, //
