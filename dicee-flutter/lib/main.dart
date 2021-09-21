@@ -15,12 +15,18 @@ void main() {
   );
 }
 
-class DicePage extends StatelessWidget {
+class DicePage extends StatefulWidget {
+  const DicePage({Key key}) : super(key: key);
+
+  @override
+  _DicePageState createState() => _DicePageState();
+}
+
+class _DicePageState extends State<DicePage> {
+  int leftDiceNumber = 5;
+
   @override
   Widget build(BuildContext context) {
-
-    var leftDiceNumber = 5;
-
     return Center(
       child: Row(
         children: <Widget>[
@@ -29,7 +35,9 @@ class DicePage extends StatelessWidget {
             child: FlatButton(
               // FlatButton은 기본적으로 16 패딩을 갖음
               onPressed: () {
-                print('왼쪽 주사위 onPressed!!!');
+                setState(() {
+                  leftDiceNumber = 3;
+                }); // setState() 메소드를 build() 함수를 다시 호출하게 해줌
               }, // 클릭이벤트(void callback 구조)
               child: Image.asset('images/dice$leftDiceNumber.png'),
             ),
