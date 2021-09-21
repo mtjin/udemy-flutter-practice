@@ -28,6 +28,13 @@ class _DicePageState extends State<DicePage> {
   int leftDiceNumber = 5;
   int rightDiceNumber = 5;
 
+  void randomDice(){ // 주사위 랜덤 함수 모듈화
+    setState(() {
+      leftDiceNumber = Random().nextInt(6) + 1; // 숫자 랜덤
+      rightDiceNumber = Random().nextInt(6) + 1; // 숫자 랜덤
+    }); // setState() 메소드를 build() 함수를 다시 호출하게 해줌
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -38,10 +45,7 @@ class _DicePageState extends State<DicePage> {
             child: FlatButton(
               // FlatButton은 기본적으로 16 패딩을 갖음
               onPressed: () {
-                setState(() {
-                  leftDiceNumber = Random().nextInt(6) + 1; // 숫자 랜덤
-                  rightDiceNumber = Random().nextInt(6) + 1; // 숫자 랜덤
-                }); // setState() 메소드를 build() 함수를 다시 호출하게 해줌
+                randomDice();
               }, // 클릭이벤트(void callback 구조)
               child: Image.asset('images/dice$leftDiceNumber.png'),
             ),
@@ -50,10 +54,7 @@ class _DicePageState extends State<DicePage> {
             flex: 1,
             child: FlatButton(
                 onPressed: () {
-                  setState(() {
-                    leftDiceNumber = Random().nextInt(6) + 1; // 숫자 랜덤
-                    rightDiceNumber = Random().nextInt(6) + 1; // 숫자 랜덤
-                  });
+                  randomDice();
                 }, //
                 child: Image.asset('images/dice$rightDiceNumber.png')),
           )
