@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(
-  MaterialApp(
-    home: BallPage(),
-  ),
-);
+void main() =>
+    runApp(
+      MaterialApp(
+        home: BallPage(),
+      ),
+    );
 
 class BallPage extends StatelessWidget {
   const BallPage({Key key}) : super(key: key);
@@ -33,7 +34,12 @@ class _BallState extends State<Ball> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Image.asset('images/ball1.png'),
+      child: FlatButton(
+        child: Image.asset('images/ball1.png'),
+        onPressed: () {
+          print('I got clicked');
+        },
+      ),
     );
   }
 }
