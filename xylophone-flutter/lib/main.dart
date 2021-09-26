@@ -9,12 +9,13 @@ class XylophoneApp extends StatelessWidget {
     player.play('note$soundNumber.wav');
   }
 
-  void buildKey() {
-    Expanded(
+  // 매개변수명으로 인자를 넘길때는 {} 로 매개변수를 감싸줘야함
+  Expanded buildKey({Color color, int soundNumber}) {
+    return Expanded(
       child: FlatButton(
-        color: Colors.red,
+        color: color,
         onPressed: () {
-          playSound(1);
+          playSound(soundNumber);
         },
       ),
     );
@@ -28,13 +29,13 @@ class XylophoneApp extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              buildKey(),
-              buildKey(),
-              buildKey(),
-              buildKey(),
-              buildKey(),
-              buildKey(),
-              buildKey(),
+              buildKey(color: Colors.red, soundNumber: 1),
+              buildKey(color: Colors.purple, soundNumber: 1),
+              buildKey(color: Colors.yellow, soundNumber: 1),
+              buildKey(color: Colors.green, soundNumber: 1),
+              buildKey(color: Colors.teal, soundNumber: 1),
+              buildKey(color: Colors.blue, soundNumber: 1),
+              buildKey(color: Colors.purple, soundNumber: 1),
             ],
           ),
         ),
