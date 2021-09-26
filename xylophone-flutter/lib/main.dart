@@ -10,16 +10,15 @@ class XylophoneApp extends StatelessWidget {
   }
 
   // 매개변수명으로 인자를 넘길때는 {} 로 매개변수를 감싸줘야함
-  Expanded buildKey({Color color, int soundNumber}) {
-    return Expanded(
-      child: FlatButton(
-        color: color,
-        onPressed: () {
-          playSound(soundNumber);
-        },
-      ),
-    );
-  }
+  // Arrow Function 적용
+  Expanded buildKey({Color color, int soundNumber}) => Expanded(
+        child: FlatButton(
+          color: color,
+          onPressed: () {
+            playSound(soundNumber);
+          },
+        ),
+      );
 
   @override
   Widget build(BuildContext context) {
