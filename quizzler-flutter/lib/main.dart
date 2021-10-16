@@ -35,6 +35,9 @@ class _QuizPageState extends State<QuizPage> {
     'A slug\'s blood is green.'
   ];
 
+  // 정답리스트
+  List<bool> answers = [false, true, true];
+
   // 질문 번호 (핫리로드시 state를 보존하기때문에 이 값을 보존함 0부터 다시 시작하고싶으면 핫스타트 사용해야함)
   int questionNumber = 0;
 
@@ -75,6 +78,13 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked true.
+                bool correctNumber = answers[questionNumber];
+                // if else 문을 활용한 정답 분기처리
+                if (correctNumber == true) {
+                  print('right');
+                } else {
+                  print('wrong');
+                }
                 setState(() {
                   questionNumber++;
                 });
