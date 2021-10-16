@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quizzler/quiz_brain.dart';
+//TODO: Step 2 - Import the rFlutter_Alert package here.
+import 'package:rflutter_alert/rflutter_alert.dart';
+import 'quiz_brain.dart';
 
 QuizBrain quizBrain = QuizBrain();
 
@@ -28,27 +30,49 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  // 스코어 아이콘 리스트
   List<Icon> scoreKeeper = [];
 
   void checkAnswer(bool userPickedAnswer) {
-    //The user picked true.
-    bool correctAnswer = quizBrain.getQuestionNumber();
+    bool correctAnswer = quizBrain.getCorrectAnswer();
+
     setState(() {
-      // if else 문을 활용한 정답 분기처리
-      if (userPickedAnswer == correctAnswer) {
-        scoreKeeper.add(Icon(
-          Icons.check,
-          color: Colors.green,
-        ));
-      } else {
-        scoreKeeper.add(Icon(
-          Icons.close,
-          color: Colors.red,
-        ));
+      //TODO: Step 4 - Use IF/ELSE to check if we've reached the end of the quiz. If so,
+      //On the next line, you can also use if (quizBrain.isFinished()) {}, it does the same thing.
+      if (quizBrain.isFinished() == true) {
+        //TODO Step 4 Part A - show an alert using rFlutter_alert,
+
+        //This is the code for the basic alert from the docs for rFlutter Alert:
+        //Alert(context: context, title: "RFLUTTER", desc: "Flutter is awesome.").show();
+
+        //Modified for our purposes:
+        Alert(
+          context: context,
+          title: 'Finished!',
+          desc: 'You\'ve reached the end of the quiz.',
+        ).show();
+
+        //TODO Step 4 Part C - reset the questionNumber,
+        quizBrain.reset();
+
+        //TODO Step 4 Part D - empty out the scoreKeeper.
+        scoreKeeper = [];
       }
-      // 다음 문제
-      quizBrain.nextQuestion();
+
+      //TODO: Step 6 - If we've not reached the end, ELSE do the answer checking steps below 👇
+      else {
+        if (userPickedAnswer == correctAnswer) {
+          scoreKeeper.add(Icon(
+            Icons.check,
+            color: Colors.green,
+          ));
+        } else {
+          scoreKeeper.add(Icon(
+            Icons.close,
+            color: Colors.red,
+          ));
+        }
+        quizBrain.nextQuestion();
+      }
     });
   }
 
@@ -65,7 +89,6 @@ class _QuizPageState extends State<QuizPage> {
             child: Center(
               child: Text(
                 quizBrain.getQuestionText(),
-                //리스트 이용
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -114,8 +137,9 @@ class _QuizPageState extends State<QuizPage> {
             ),
           ),
         ),
-        // 스코어 리스트 동적으로 그려줌
-        Row(children: scoreKeeper)
+        Row(
+          children: scoreKeeper,
+        )
       ],
     );
   }
