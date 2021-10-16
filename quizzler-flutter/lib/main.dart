@@ -31,6 +31,27 @@ class _QuizPageState extends State<QuizPage> {
   // 스코어 아이콘 리스트
   List<Icon> scoreKeeper = [];
 
+  void checkAnswer(bool userPickedAnswer) {
+    //The user picked true.
+    bool correctAnswer = quizBrain.getQuestionNumber();
+    setState(() {
+      // if else 문을 활용한 정답 분기처리
+      if (userPickedAnswer == correctAnswer) {
+        scoreKeeper.add(Icon(
+          Icons.check,
+          color: Colors.green,
+        ));
+      } else {
+        scoreKeeper.add(Icon(
+          Icons.close,
+          color: Colors.red,
+        ));
+      }
+      // 다음 문제
+      quizBrain.nextQuestion();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -69,16 +90,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked true.
-                bool correctNumber = quizBrain.getQuestionNumber();
-                // if else 문을 활용한 정답 분기처리
-                if (correctNumber == true) {
-                  print('right');
-                } else {
-                  print('wrong');
-                }
-                setState(() {
-                  quizBrain.nextQuestion();
-                });
+                checkAnswer(true);
               },
             ),
           ),
@@ -97,9 +109,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked false.
-                setState(() {
-                  quizBrain.nextQuestion();
-                });
+                checkAnswer(false);
               },
             ),
           ),
