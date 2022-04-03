@@ -61,6 +61,7 @@ class StoryBrain {
 
 //TODO: Step 17 - Create a method called nextStory(), it should not have any outputs but it should have 1 input called choiceNumber which will be the choice number (int) made by the user.
   void nextStory(int choiceNumber) {
+    //TODO: Step 20 - Download the story plan here: https://drive.google.com/uc?export=download&id=1KU6EghkO9Hf2hRM0756xFHgNaZyGCou3
     //TODO: Step 21 - Using the story plan, update nextStory to change the storyNumber depending on the choice made by the user.
     if (choiceNumber == 1 && storyNumber == 0) {
       storyNumber = 2;
@@ -75,11 +76,15 @@ class StoryBrain {
     } else if (choiceNumber == 2 && storyNumber == 2) {
       storyNumber = 4;
     }
+//TODO: Step 22 - In nextStory() if the storyNumber is equal to 3 or 4 or 5, that means it's the end of the game and it should call a method called restart() that resets the storyNumber to 0.
+    else if (storyNumber == 3 || storyNumber == 4 || storyNumber == 5) {
+      restart();
+    }
   }
 
-//TODO: Step 20 - Download the story plan here: https://drive.google.com/uc?export=download&id=1KU6EghkO9Hf2hRM0756xFHgNaZyGCou3
-
-//TODO: Step 22 - In nextStory() if the storyNumber is equal to 3 or 4 or 5, that means it's the end of the game and it should call a method called restart() that resets the storyNumber to 0.
-
+  //TODO: Step 22
+  void restart() {
+    storyNumber = 0;
+  }
 //TODO: Step 27 - Create a method called buttonShouldBeVisible() which checks to see if storyNumber is 0 or 1 or 2 (when both buttons should show choices) and return true if that is the case, else it should return false.
 }
