@@ -1,7 +1,9 @@
 //TODO: Step 6 - import the story.dart file into this file.
 
 //TODO: Step 5 - Create a new class called StoryBrain.
+class StoryBrain{
 
+}
 //TODO: Step 7 - Uncomment the lines below to include storyData as a private property in StoryBrain. Hint: You might need to change something in story.dart to make this work.
 
 //List<Story> _storyData = [
