@@ -9,12 +9,60 @@ class _InputPageState extends State<InputPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('BMI CALCULATOR'),
-      ),
-      body: Center(
-        child: Text('Body Text'),
-      ),
+        appBar: AppBar(
+          title: Text('BMI CALCULATOR'),
+        ),
+        body: Column(
+          children: <Widget>[
+            Expanded(
+                child: Row(
+              children: <Widget>[
+                Expanded(
+                    child: ReusableCard(
+                  colour: Color(0xFF1D1E33),
+                )),
+                Expanded(
+                    child: ReusableCard(
+                  colour: Color(0xFF1D1E33),
+                ))
+              ],
+            )),
+            Expanded(
+                child: ReusableCard(
+              colour: Color(0xFF1D1E33),
+            )),
+            Expanded(
+                child: Row(
+              children: <Widget>[
+                Expanded(
+                    child: ReusableCard(
+                  colour: Color(0xFF1D1E33),
+                )),
+                Expanded(
+                    child: ReusableCard(
+                  colour: Color(0xFF1D1E33),
+                ))
+              ],
+            )),
+          ],
+        ));
+  }
+}
+
+class ReusableCard extends StatelessWidget {
+  // @required로 색상값 매개변수 필요하다고 알려줌 (린트로 잡힘)
+  ReusableCard({@required this.colour});
+
+  final Color colour;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(15.0),
+      decoration: BoxDecoration(
+          // 생성자로 받은 컬러 사용
+          color: colour,
+          borderRadius: BorderRadius.circular(10.0)),
     );
   }
 }
