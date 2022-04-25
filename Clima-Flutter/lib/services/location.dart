@@ -1,6 +1,6 @@
 import 'package:geolocator/geolocator.dart';
 
-//api key  f46d282380022c79ed0008839c7af08d
+
 class Location {
   double latitude;
   double longitude;
