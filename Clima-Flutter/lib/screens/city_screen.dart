@@ -7,6 +7,8 @@ class CityScreen extends StatefulWidget {
 }
 
 class _CityScreenState extends State<CityScreen> {
+  String cityName;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +26,10 @@ class _CityScreenState extends State<CityScreen> {
               Align(
                 alignment: Alignment.topLeft,
                 child: FlatButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    // 뒤로가기는 값전달하지 않고 화면을 스택에서 제거한다.
+                    Navigator.pop(context);
+                  },
                   child: Icon(
                     Icons.arrow_back_ios,
                     size: 50.0,
@@ -38,11 +43,16 @@ class _CityScreenState extends State<CityScreen> {
                     color: Colors.black,
                   ),
                   decoration: kTextFieldInputDecoration,
-                  onChanged: (value) {},
+                  onChanged: (value) {
+                    cityName = value;
+                  },
                 ),
               ),
               FlatButton(
-                onPressed: () {},
+                onPressed: () {
+                  // 결과값을 리턴할 수도 있음
+                  Navigator.pop(context, cityName);
+                },
                 child: Text(
                   'Get Weather',
                   style: kButtonTextStyle,

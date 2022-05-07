@@ -75,11 +75,18 @@ class _LocationScreenState extends State<LocationScreen> {
                     ),
                   ),
                   FlatButton(
-                    onPressed: () {
-                      Navigator.push(context,
+                    onPressed: () async {
+                      // 네비게이터로 이동한 화면에서의 결과값을 받을 수 있다.
+                      // async await 사용이 필요
+                      var typedName = await Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
                         return CityScreen();
-                       }));
+                      }));
+                      if (typedName != null) {
+                        var weatherData =
+                            await weather.getCityWeather(typedName);
+                        updateUI(weatherData);
+                      }
                     },
                     child: Icon(
                       Icons.location_city,
