@@ -33,7 +33,7 @@ const List<String> cryptoList = [
 ];
 
 const coinAPIURL = 'https://rest.coinapi.io/v1/exchangerate';
-const apiKey = 'YOUR-API-KEY-HERE';
+const apiKey = 'CB66DB8B-23D2-439A-8CF0-EC819C856833';
 
 class CoinData {
   String coinRateUrl = '$coinAPIURL/BTC/USD?apikey=$apiKey';
@@ -47,6 +47,7 @@ class CoinData {
       return lastPrice;
     } else {
       print(response.statusCode);
+      throw 'getCoinData() error';
     }
   }
 }
